@@ -45,7 +45,7 @@ class Database{
                 if(isset($rest2['name'])){
                     session_start();
                     $_SESSION['name'] = $rest2['name']; 
-                    $_SESSION['type'] = $rest2['type'];
+                    $_SESSION['type'] = $rest2['id_rol'];
                     $_SESSION['user'] = $rest2['user'];
                     $_SESSION['logged'] = True; 
                     header("Location:../index.php");
@@ -56,6 +56,27 @@ class Database{
         }else{
             echo "No se encuentra el usuario.";
         }
+    }
+    public function readUsers(){
+        $sql = "SELECT * FROM users";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+    public function readData($startDate, $endDate){
+        $r = null;
+        if($startDate == null && $endDate == null){
+            $sql = "SELECT * FROM sensor";
+
+        }else{
+            if($startDate == null){
+                $sql = "SELECT * FROM sensor WHERE registro <= " . $endDate; //
+            }else if($endDate == null){
+                $sql = "SELECT * FROM sensor WHERE registro >= " . $startDate;
+            }else{
+                $sql = "SELECT * FROM sensor WHERE registro BETWEEN " . $startDate . " AND " . $endDate;
+            }
+        }
+        return $r;
     }
 }
 ?>
