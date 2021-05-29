@@ -24,7 +24,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php $b = !$GLOBALS['data'] ? '' : 'disabled' ; echo $b; ?>" href="#" tabindex="-1" aria-disabled="<?php $b = $GLOBALS['data'] ? 'true' : 'false' ; echo $b; ?>">Sensoress</a>
+          <a class="nav-link <?php $b = !$GLOBALS['data'] ? '' : 'disabled' ; echo $b; ?>" href="dashboard.php?page=sensores" tabindex="-1" aria-disabled="<?php $b = $GLOBALS['data'] ? 'true' : 'false' ; echo $b; //tarea?>">Sensoress</a> 
         </li>
       </ul>
     </div>

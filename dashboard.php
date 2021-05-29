@@ -15,8 +15,8 @@
         }
     }
     include ("db/database.php");
-    $sensores = new Database();
-    $res = $sensores->readData(null, null);
+    $data = new Database();
+    $res = $data->readData(null, null);
 
     if($res == null){
         $GLOBALS['data'] = True;
@@ -28,7 +28,13 @@
     include ("html/navbar.php");
     //Contenido
     if($GLOBALS['page'] == 'home'){
-        include ("html/home.html");
+        include ("html/content/home.html");
+    }else if($GLOBALS['page'] == 'create'){
+        include ("html/content/create.html");
+    }else if($GLOBALS['page'] == 'configure'){
+        include ("html/content/configure.php");
+    }else if($GLOBALS['page'] == 'sensores'){
+        include ("html/content/sensores.php");
     }
     //Parte inferior
     include ("html/footer.html")

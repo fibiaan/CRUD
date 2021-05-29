@@ -63,18 +63,29 @@ class Database{
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
+    public function readRoles(){
+        $sql = "SELECT * FROM roles";
+        return mysqli_query($this->con, $sql);
+    }
+    public function updateData($id_user, $id_rol){
+        $sql = "UPDATE users SET id_rol = " . $id_rol . " WHERE id = " . $id_user;
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
     public function readData($startDate, $endDate){
-        $r = null;
         if($startDate == null && $endDate == null){
             $sql = "SELECT * FROM sensor";
-
+            $r = mysqli_query($this->con, $sql);
         }else{
             if($startDate == null){
                 $sql = "SELECT * FROM sensor WHERE registro <= " . $endDate; //
+                $r = mysqli_query($this->con, $sql);
             }else if($endDate == null){
                 $sql = "SELECT * FROM sensor WHERE registro >= " . $startDate;
+                $r = mysqli_query($this->con, $sql);
             }else{
                 $sql = "SELECT * FROM sensor WHERE registro BETWEEN " . $startDate . " AND " . $endDate;
+                $r = mysqli_query($this->con, $sql);
             }
         }
         return $r;
