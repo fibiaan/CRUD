@@ -1,13 +1,17 @@
 <?php 
-    include ("html/header.html");
-
-    if(false){
-        
+    session_start();
+    if(isset($_SESSION['name']) && isset($_SESSION['logged'])){
+        if($_SESSION['logged']){
+            header('Location: dashboard.php');
+        }
     }else{
-        include ("html/registro.html");
-        
     }
 
+    include ("html/header.html");
+        
+    include ("html/registro.html");
+
+    
 ?>
 
 
