@@ -3,7 +3,7 @@
     $usuarios = new Database();
     
     if(isset($_POST) && !empty($_POST)){
-        $user = $usuarios->sanitize($_POST['user']);
+        $user = $usuarios->sanitize($_POST['user']); //agregar los nuevos usuarios
         $password = $usuarios->sanitize($_POST['password']);
         $name = $usuarios->sanitize($_POST['name']);
 
