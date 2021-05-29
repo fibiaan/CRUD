@@ -33,13 +33,28 @@ class Database{
     }
     public function readUser($user, $password){
         $sql1 = "SELECT count(*) as conteo FROM users WHERE user='" . $user . "'";
-        echo $sql1 . "<br>";
         $rest = mysqli_query($this->con, $sql1);
         $datos = mysqli_fetch_array($rest);
-        if($datos['conteo'] > 0){
-
+        if($datos['conteo'] == 1 ){
+            $sql2 = "SELECT * FROM users WHERE user = '" . $user . "' AND password = '" . $password . "'";
+            $rest2 = mysqli_query($this->con, $sql2);
+            $rest2 = mysqli_fetch_array($rest2);
+            if($rest2 == null){
+                echo "No coincide la contraseña.";
+            }else{
+                if(isset($rest2['name'])){
+                    session_start();
+                    $_SESSION['name'] = $rest2['name']; 
+                    $_SESSION['type'] = $rest2['type'];
+                    $_SESSION['user'] = $rest2['user'];
+                    $_SESSION['logged'] = True; 
+                    header("Location:../index.php");
+                }else{
+                    echo "No coincide la contraseña.";
+                }
+            }
         }else{
-            
+            echo "No se encuentra el usuario.";
         }
     }
 }
