@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row" style="margin-bottom: 20px;">
+        <form method="post" action="php/create_users.php">
+            <div class="row align-items-end">
+                <div class="col">
+                    <label>Nombre del usuario</label>
+                    <input type="text" name="name" class="form-control" placeholder="Nombre" aria-label="Nombre">
+                </div>
+                <div class="col">
+                    <label>Sobrenombre del usuario</label>
+                    <input type="text" name="user" class="form-control" placeholder="Usuario" aria-label="Usuario">
+                </div>
+                <div class="col">
+                    <label>Contraseña del usuario</label>
+                    <input type="password" name="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña">
+                </div>
+                <div class="col ">
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row t-1">
+        <div class="col">
+            <a class="btn btn-primary" href="login.php" role="button">Iniciar sesión</a>
+        </div>
+    </div>
+</div>
